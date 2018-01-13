@@ -1,0 +1,25 @@
+{
+  "name": "parcel-demo",
+  "version": "1.0.0",
+  "main": "main.js",
+  "license": "MIT",
+  "author": "yebin",
+  "scripts": {
+    "dev": "parcel index.html",
+    "build": "parcel build index.html --out-dir build --public-url //h5.u51.com/web.u51.com/storage/"
+  },
+  "devDependencies": {
+    "autoprefixer": "^7.2.5",
+    "babel-preset-env": "^1.6.1",
+    "node-sass": "^4.7.2",
+    "parcel-bundler": "^1.2.0",
+    "parcel-plugin-vue": "^1.5.0",
+    "postcss-modules": "^1.1.0",
+    "postcss-px2rem": "^0.3.0",
+    "vue": "^2.5.13",
+    "vuex": "^3.0.1"
+  },
+  "dependencies": {
+    "vue-router": "^3.0.1"
+  }
+}
