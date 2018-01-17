@@ -68,10 +68,10 @@ require = (function (modules, cache, entry) {
 
   // Override the current require with this new one
   return newRequire;
-})({4:[function(require,module,exports) {
+})({12:[function(require,module,exports) {
 "use strict";
 
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".card{\n\n}");(function () {
+;(function () {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -80,7 +80,7 @@ var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".card{\n
   exports.default = {
     data: function data() {
       return {
-        msg: 'card web'
+        msg: 'card web 1'
       };
     }
   };
@@ -91,24 +91,25 @@ if (__vue__options__.functional) {
   console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.");
 }
 __vue__options__.render = function render() {
-  var _vm = this;var _h = _vm.$createElement;var _c = _vm._self._c || _h;return _c('div', [_c('h1', [_vm._v(_vm._s(_vm.msg))])]);
+  var _vm = this;var _h = _vm.$createElement;var _c = _vm._self._c || _h;return _vm._m(0);
 };
-__vue__options__.staticRenderFns = [];
+__vue__options__.staticRenderFns = [function render() {
+  var _vm = this;var _h = _vm.$createElement;var _c = _vm._self._c || _h;return _c('div', [_c('h1', [_vm._v("haha")])]);
+}];
 if (module.hot) {
   (function () {
     var hotAPI = require("vue-hot-reload-api");
     hotAPI.install(require("vue"), true);
     if (!hotAPI.compatible) return;
     module.hot.accept();
-    module.hot.dispose(__vueify_style_dispose__);
     if (!module.hot.data) {
       hotAPI.createRecord("data-v-398ec55f", __vue__options__);
     } else {
-      hotAPI.rerender("data-v-398ec55f", __vue__options__);
+      hotAPI.reload("data-v-398ec55f", __vue__options__);
     }
   })();
 }
-},{"vueify/lib/insert-css":12,"vue-hot-reload-api":10,"vue":8}],0:[function(require,module,exports) {
+},{"vue-hot-reload-api":17,"vue":15}],0:[function(require,module,exports) {
 var global = (1, eval)('this');
 var OldModule = module.bundle.Module;
 function Module(config) {
@@ -127,7 +128,7 @@ function Module(config) {
 module.bundle.Module = Module;
 
 if (!module.bundle.parent && typeof WebSocket !== 'undefined') {
-  var ws = new WebSocket('ws://localhost:52803/');
+  var ws = new WebSocket('ws://localhost:55539/');
   ws.onmessage = function(event) {
     var data = JSON.parse(event.data);
 
@@ -230,4 +231,4 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.require, id)
   });
 }
-},{}]},{},[0,4])
+},{}]},{},[0,12])

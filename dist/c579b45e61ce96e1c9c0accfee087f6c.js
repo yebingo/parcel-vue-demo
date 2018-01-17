@@ -68,10 +68,10 @@ require = (function (modules, cache, entry) {
 
   // Override the current require with this new one
   return newRequire;
-})({3:[function(require,module,exports) {
+})({11:[function(require,module,exports) {
 "use strict";
 
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".index{\n\n}");(function () {
+;(function () {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -100,7 +100,6 @@ if (module.hot) {
     hotAPI.install(require("vue"), true);
     if (!hotAPI.compatible) return;
     module.hot.accept();
-    module.hot.dispose(__vueify_style_dispose__);
     if (!module.hot.data) {
       hotAPI.createRecord("data-v-1866240c", __vue__options__);
     } else {
@@ -108,7 +107,7 @@ if (module.hot) {
     }
   })();
 }
-},{"vue-hot-reload-api":10,"vue":8,"vueify/lib/insert-css":12}],0:[function(require,module,exports) {
+},{"vue-hot-reload-api":17,"vue":15}],0:[function(require,module,exports) {
 var global = (1, eval)('this');
 var OldModule = module.bundle.Module;
 function Module(config) {
@@ -127,7 +126,7 @@ function Module(config) {
 module.bundle.Module = Module;
 
 if (!module.bundle.parent && typeof WebSocket !== 'undefined') {
-  var ws = new WebSocket('ws://localhost:52803/');
+  var ws = new WebSocket('ws://localhost:55539/');
   ws.onmessage = function(event) {
     var data = JSON.parse(event.data);
 
@@ -230,4 +229,4 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.require, id)
   });
 }
-},{}]},{},[0,3])
+},{}]},{},[0,11])

@@ -68,6 +68,6 @@ require = (function (modules, cache, entry) {
 
   // Override the current require with this new one
   return newRequire;
-})({14:[function(require,module,exports) {
+})({11:[function(require,module,exports) {
 "use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default={data:function(){return{msg:"card web 1"}}},module.exports.__esModule&&(module.exports=module.exports.default);var e="function"==typeof module.exports?module.exports.options:module.exports;e.render=function(){var e=this.$createElement;this._self._c;return this._m(0)},e.staticRenderFns=[function(){var e=this.$createElement,t=this._self._c||e;return t("div",[t("h1",[this._v("haha")])])}];
-},{}]},{},[14])
+},{}]},{},[11])

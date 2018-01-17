@@ -68,8 +68,6 @@ require = (function (modules, cache, entry) {
 
   // Override the current require with this new one
   return newRequire;
-})({16:[function(require,module,exports) {
-var e=exports.cache={};function t(){}exports.insert=function(n){if(e[n])return t;e[n]=!0;var r=document.createElement("style");return r.setAttribute("type","text/css"),"textContent"in r?r.textContent=n:r.styleSheet.cssText=n,document.getElementsByTagName("head")[0].appendChild(r),function(){document.getElementsByTagName("head")[0].removeChild(r),e[n]=!1}};
-},{}],9:[function(require,module,exports) {
-"use strict";var e=require("vueify/lib/insert-css").insert(".index{display:flex;font-size:24px}");!function(){Object.defineProperty(exports,"__esModule",{value:!0});var e,t=require("../store/index"),s=(e=t)&&e.__esModule?e:{default:e};exports.default={data:function(){return{msg:"hello parcel"}},computed:{name:function(){return s.default.state.firstData}}}}(),module.exports.__esModule&&(module.exports=module.exports.default);var t="function"==typeof module.exports?module.exports.options:module.exports;t.render=function(){var e=this.$createElement,t=this._self._c||e;return t("div",{staticClass:"index"},[t("h1",[this._v("haha")]),this._v(" "),t("router-link",{attrs:{to:"/card",tag:"div"}},[this._v(this._s(this.name))]),this._v(" "),t("router-link",{attrs:{to:"/city",tag:"div"}},[this._v("to city web")])],1)},t.staticRenderFns=[];
-},{"vueify/lib/insert-css":16,"../store/index":4}]},{},[9])
+})({13:[function(require,module,exports) {
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default={data:function(){return{msg:"card web 1"}}},module.exports.__esModule&&(module.exports=module.exports.default);var e="function"==typeof module.exports?module.exports.options:module.exports;e.render=function(){var e=this,t=e.$createElement;e._self._c;return e._m(0)},e.staticRenderFns=[function(){var e=this,t=e.$createElement,r=e._self._c||t;return r("div",[r("h1",[e._v("haha")])])}];
+},{}]},{},[13])

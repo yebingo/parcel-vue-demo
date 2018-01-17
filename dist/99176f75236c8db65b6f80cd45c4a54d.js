@@ -68,7 +68,7 @@ require = (function (modules, cache, entry) {
 
   // Override the current require with this new one
   return newRequire;
-})({11:[function(require,module,exports) {
+})({15:[function(require,module,exports) {
 var global = (1,eval)("this");
 "use strict";
 
@@ -7272,7 +7272,7 @@ Vue$3.nextTick(function () {
 /*  */
 
 exports.default = Vue$3;
-},{}],15:[function(require,module,exports) {
+},{}],20:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -9728,7 +9728,7 @@ if (inBrowser && window.Vue) {
 }
 
 exports.default = VueRouter;
-},{}],10:[function(require,module,exports) {
+},{}],13:[function(require,module,exports) {
 var bundleURL = null;
 function getBundleURLCached() {
   if (!bundleURL) {
@@ -9759,7 +9759,7 @@ function getBaseURL(url) {
 exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
 
-},{}],6:[function(require,module,exports) {
+},{}],9:[function(require,module,exports) {
 var getBundleURL = require('./bundle-url').getBundleURL;
 
 function loadBundles(bundles) {
@@ -9853,7 +9853,7 @@ LazyPromise.prototype.catch = function (onError) {
   return this.promise || (this.promise = new Promise(this.executor).catch(onError));
 };
 
-},{"./bundle-url":10}],5:[function(require,module,exports) {
+},{"./bundle-url":13}],7:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -9873,13 +9873,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // import index from '../views/index/index.vue';
 // 此种方式引入即可实现路由懒加载
 var index = function index() {
-  return require("_bundle_loader")(require.resolve('../views/index.vue'));
+  return require("_bundle_loader")(require.resolve('../views/index/index.vue'));
 };
 var city = function city() {
-  return require("_bundle_loader")(require.resolve('../views/city.vue'));
+  return require("_bundle_loader")(require.resolve('../views/city/index.vue'));
 };
 var card = function card() {
-  return require("_bundle_loader")(require.resolve('../views/card.vue'));
+  return require("_bundle_loader")(require.resolve('../views/card/index.vue'));
 };
 
 _vue2.default.use(_vueRouter2.default);
@@ -9899,32 +9899,51 @@ exports.default = new _vueRouter2.default({
     component: card
   }]
 });
-},{"vue":11,"vue-router":15,"_bundle_loader":6,"../views/index.vue":["99639ce5984af3ea5719ddae390f1492.js",7],"../views/city.vue":["53c33eb6cf6cb7d2cae5c61b0b13ed38.js",8],"../views/card.vue":["8784634802914931d515321286ad8cc7.js",9]}],13:[function(require,module,exports) {
-var inserted = exports.cache = {}
+},{"vue":15,"vue-router":20,"_bundle_loader":9,"../views/index/index.vue":["547c174108504c7f95393a87f5401eb3.js","547c174108504c7f95393a87f5401eb3.css",10],"../views/city/index.vue":["c579b45e61ce96e1c9c0accfee087f6c.js",11],"../views/card/index.vue":["d875aa2f912744511c892844dba95b16.js",12]}],8:[function(require,module,exports) {
+var bundle = require('./bundle-url');
 
-function noop () {}
-
-exports.insert = function (css) {
-  if (inserted[css]) return noop
-  inserted[css] = true
-
-  var elem = document.createElement('style')
-  elem.setAttribute('type', 'text/css')
-
-  if ('textContent' in elem) {
-    elem.textContent = css
-  } else {
-    elem.styleSheet.cssText = css
-  }
-
-  document.getElementsByTagName('head')[0].appendChild(elem)
-  return function () {
-    document.getElementsByTagName('head')[0].removeChild(elem)
-    inserted[css] = false
-  }
+function updateLink(link) {
+  var newLink = link.cloneNode();
+  newLink.onload = function () {
+    link.remove();
+  };
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
 }
 
-},{}],12:[function(require,module,exports) {
+var cssTimeout = null;
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
+      }
+    }
+
+    cssTimeout = null;
+  }, 50);
+}
+
+module.exports = reloadCSS;
+
+},{"./bundle-url":13}],5:[function(require,module,exports) {
+
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+},{"_css_loader":8}],6:[function(require,module,exports) {
+
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+},{"_css_loader":8}],17:[function(require,module,exports) {
 var Vue // late bind
 var version
 var map = (window.__VUE_HOT_MAP__ = Object.create(null))
@@ -10157,12 +10176,17 @@ exports.reload = tryWrap(function (id, options) {
 },{}],3:[function(require,module,exports) {
 "use strict";
 
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert("/*\n\tHTML5 Reset :: style.css\n\t----------------------------------------------------------\n\tWe have learned much from/been inspired by/taken code where offered from:\n\n\tEric Meyer\t\t\t\t\t:: http://meyerweb.com\n\tHTML5 Doctor\t\t\t\t:: http://html5doctor.com\n\tand the HTML5 Boilerplate\t:: http://html5boilerplate.com\n\n-------------------------------------------------------------------------------*/\n\n/* Let's default this puppy out\n-------------------------------------------------------------------------------*/\n\nhtml, body, body div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, footer, header, menu, nav, section, time, mark, audio, video, details, summary {\n\tmargin: 0;\n\tpadding: 0;\n\tborder: 0;\n\tfont-size: 100%;\n\tfont-weight: normal;\n\tvertical-align: baseline;\n\tbackground: transparent;\n}\n\nmain, article, aside, figure, footer, header, nav, section, details, summary {display: block;}\n\n/* Handle box-sizing while better addressing child elements:\n   http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */\nhtml {\n\tbox-sizing: border-box;\n}\n\n*,\n*:before,\n*:after {\n\tbox-sizing: inherit;\n}\n\n/* consider resetting the default cursor: https://gist.github.com/murtaugh/5247154 */\n\n/* Responsive images and other embedded objects */\n/* if you don't have full control over `img` tags (if you have to overcome attributes), consider adding height: auto */\nimg,\nobject,\nembed {max-width: 100%;}\n\n/*\n   Note: keeping IMG here will cause problems if you're using foreground images as sprites.\n\tIn fact, it *will* cause problems with Google Maps' controls at small size.\n\tIf this is the case for you, try uncommenting the following:\n\n#map img {\n\t\tmax-width: none;\n}\n*/\n\n/* force a vertical scrollbar to prevent a jumpy page */\n/*html {overflow-y: scroll;}*/\n\n/* we use a lot of ULs that aren't bulleted.\n\tyou'll have to restore the bullets within content,\n\twhich is fine because they're probably customized anyway */\nul {list-style: none;}\n\nblockquote, q {quotes: none;}\n\nblockquote:before,\nblockquote:after,\nq:before,\nq:after {content: ''; content: none;}\n\na {margin: 0; padding: 0; font-size: 100%; vertical-align: baseline; background: transparent;}\n\ndel {text-decoration: line-through;}\n\nabbr[title], dfn[title] {border-bottom: 1px dotted #000; cursor: help;}\n\n/* tables still need cellspacing=\"0\" in the markup */\ntable {border-collapse: separate; border-spacing: 0;}\nth {font-weight: bold; vertical-align: bottom;}\ntd {font-weight: normal; vertical-align: top;}\n\nhr {display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0;}\n\ninput, select {vertical-align: middle;}\n\npre {\n    white-space: pre; /* CSS2 */\n    white-space: pre-wrap; /* CSS 2.1 */\n    white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */\n    word-wrap: break-word; /* IE */\n}\n\ninput[type=\"radio\"] {vertical-align: text-bottom;}\ninput[type=\"checkbox\"] {vertical-align: bottom;}\n.ie7 input[type=\"checkbox\"] {vertical-align: baseline;}\n.ie6 input {vertical-align: text-bottom;}\n\nselect, input, textarea {font: 99% sans-serif;}\n\ntable {font-size: inherit; font: 100%;}\n\nsmall {font-size: 85%;}\n\nstrong {font-weight: bold;}\n\ntd, td img {vertical-align: top;}\n\n/* Make sure sup and sub don't mess with your line-heights http://gist.github.com/413930 */\nsub, sup {font-size: 75%; line-height: 0; position: relative;}\nsup {top: -0.5em;}\nsub {bottom: -0.25em;}\n\n/* standardize any monospaced elements */\npre, code, kbd, samp {font-family: monospace, sans-serif;}\n\n/* hand cursor on clickable elements */\n.clickable,\nlabel,\ninput[type=button],\ninput[type=submit],\ninput[type=file],\nbutton {cursor: pointer;}\n\n/* Webkit browsers add a 2px margin outside the chrome of form elements */\nbutton, input, select, textarea {margin: 0;}\n\n/* make buttons play nice in IE */\nbutton,\ninput[type=button] {width: auto; overflow: visible;}\n\n/* scale images in IE7 more attractively */\n.ie7 img {-ms-interpolation-mode: bicubic;}\n\n/* prevent BG image flicker upon hover\n   (commented out as usage is rare, and the filter syntax messes with some pre-processors)\n.ie6 html {filter: expression(document.execCommand(\"BackgroundImageCache\", false, true));}\n*/\n\n/* let's clear some floats */\n.clearfix:after { content: \" \"; display: block; clear: both; }\nbutton{\n    background: transparent;\n    border: none;\n    outline: none;\n}\na,button,li,label,div{\n    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);\n}\nimg{\n    display: block;\n}\nh2,p,span{\n    overflow-x: hidden;\n    white-space: nowrap;\n    text-overflow: ellipsis;\n}\n.nolimit{\n    overflow: auto;\n    white-space: normal;\n}\n*::-webkit-input-placeholder{\n    color: #ccc;\n}");(function () {
+;(function () {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
+
+  require('./style/reset.css');
+
+  require('./style/initialize.css');
+
   exports.default = {
     name: 'app-con'
   };
@@ -10182,7 +10206,6 @@ if (module.hot) {
     hotAPI.install(require("vue"), true);
     if (!hotAPI.compatible) return;
     module.hot.accept();
-    module.hot.dispose(__vueify_style_dispose__);
     if (!module.hot.data) {
       hotAPI.createRecord("data-v-75f1f3c6", __vue__options__);
     } else {
@@ -10190,7 +10213,7 @@ if (module.hot) {
     }
   })();
 }
-},{"vueify/lib/insert-css":13,"vue-hot-reload-api":12,"vue":11}],14:[function(require,module,exports) {
+},{"./style/reset.css":5,"./style/initialize.css":6,"vue-hot-reload-api":17,"vue":15}],19:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -11172,11 +11195,11 @@ _vue2.default.use(_vuex2.default);
 
 exports.default = new _vuex2.default.Store({
   state: {
-    firstData: 'hi'
+    name: 'Bingo'
   },
   mutations: {}
 });
-},{"vue":11,"vuex":14}],2:[function(require,module,exports) {
+},{"vue":15,"vuex":19}],2:[function(require,module,exports) {
 "use strict";
 
 var _vue = require("vue");
@@ -11206,7 +11229,7 @@ new _vue2.default({
   },
   store: _index2.default
 });
-},{"vue":11,"./router":5,"./App.vue":3,"./store/index":4}],0:[function(require,module,exports) {
+},{"vue":15,"./router":7,"./App.vue":3,"./store/index":4}],0:[function(require,module,exports) {
 var global = (1, eval)('this');
 var OldModule = module.bundle.Module;
 function Module(config) {
@@ -11225,7 +11248,7 @@ function Module(config) {
 module.bundle.Module = Module;
 
 if (!module.bundle.parent && typeof WebSocket !== 'undefined') {
-  var ws = new WebSocket('ws://localhost:57293/');
+  var ws = new WebSocket('ws://localhost:55539/');
   ws.onmessage = function(event) {
     var data = JSON.parse(event.data);
 

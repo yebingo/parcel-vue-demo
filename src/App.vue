@@ -4,13 +4,10 @@
   </div>
 </template>
 
-// 初始化样式
-<style src="./style/reset.css">
-</style>
-<style src="./style/initialize.css">
-</style>
-
 <script>
+  // 初始化样式
+  import './style/reset.css';
+  import './style/initialize.css';
   export default {
     name: 'app-con'
   }
