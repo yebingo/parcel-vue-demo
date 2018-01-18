@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>haha</h1>
+        <h1>{{msg}}</h1>
     </div>
 </template>
 
@@ -11,7 +11,7 @@
 export default {
     data() {
         return {
-            msg: 'card web 1',
+            msg: 'welcome to card web',
         };
     },
 }

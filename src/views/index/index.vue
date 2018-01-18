@@ -3,7 +3,7 @@
     <view-title>{{msg}}</view-title>
     <router-link to="/card" tag="a">to card web</router-link>
     <router-link to="/city" tag="a">to city web</router-link>
-    <footer>{{name}}</footer>
+    <footer>by {{name}}</footer>
 </div>
 </template>
 

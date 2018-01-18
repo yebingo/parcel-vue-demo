@@ -6,7 +6,7 @@
   "author": "yebin",
   "scripts": {
     "dev": "parcel index.html",
-    "build": "parcel build index.html --out-dir build --public-url //h5.u51.com/web.u51.com/storage/"
+    "build": "rm -rf build && parcel build index.html --out-dir build"
   },
   "devDependencies": {
     "autoprefixer": "^7.2.5",

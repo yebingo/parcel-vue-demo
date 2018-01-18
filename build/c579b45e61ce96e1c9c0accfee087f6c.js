@@ -69,5 +69,5 @@ require = (function (modules, cache, entry) {
   // Override the current require with this new one
   return newRequire;
 })({12:[function(require,module,exports) {
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default={data:function(){return{msg:"city web"}}},module.exports.__esModule&&(module.exports=module.exports.default);var e="function"==typeof module.exports?module.exports.options:module.exports;e.render=function(){var e=this,t=e.$createElement,o=e._self._c||t;return o("div",[o("h1",[e._v(e._s(e.msg))])])},e.staticRenderFns=[];
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default={data:function(){return{msg:"welcome to city web"}}},module.exports.__esModule&&(module.exports=module.exports.default);var e="function"==typeof module.exports?module.exports.options:module.exports;e.render=function(){var e=this,t=e.$createElement,o=e._self._c||t;return o("div",[o("h1",[e._v(e._s(e.msg))])])},e.staticRenderFns=[];
 },{}]},{},[12])
