@@ -1,10 +1,21 @@
-# parcel 问题
-1、js打出的结果未被压缩？
+# parcel demo
 
-2、手淘项目是否还适用 需要配置postcss
+> 此demo集成了<b> es6 + vue + vuex + vue-router + postcss(手淘移动端适配方案) </b>，并使用了parcel进行打包，对parcel感兴趣的同学，希望这个demo对你有帮助。
 
-3、eslint配置
+## 安装依赖
 
-4、模块package.json需装parcel-bundler
+```bash
+$ nbm install
+```
 
-5、parcel中的每个路由views必须用import的方式引入css
+## 开发
+
+```bash
+$ nbm run dev
+```
+
+## 打包
+
+```bash
+$ nbm run build
+```
