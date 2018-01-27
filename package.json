@@ -6,13 +6,13 @@
   "author": "yebin",
   "scripts": {
     "dev": "parcel index.html",
-    "build": "rm -rf build && parcel build index.html --out-dir build"
+    "build": "rm -rf build && NODE_ENV=production parcel build index.html --out-dir build --public-url //h5.u51.com/web.u51.com/storage/banka-third-channel/ --no-cache"
   },
   "devDependencies": {
     "autoprefixer": "^7.2.5",
     "babel-preset-env": "^1.6.1",
     "node-sass": "^4.7.2",
-    "parcel-bundler": "^1.4.1",
+    "parcel-bundler": "^1.5.1",
     "parcel-plugin-vue": "^1.5.0",
     "postcss-modules": "^1.1.0",
     "postcss-px2rem": "^0.3.0"
