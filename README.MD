@@ -5,17 +5,17 @@
 ## 安装依赖
 
 ```bash
-$ nbm install
+$ npm install
 ```
 
 ## 开发
 
 ```bash
-$ nbm run dev
+$ npm run dev
 ```
 
 ## 打包
 
 ```bash
-$ nbm run build
+$ npm run build
 ```
